@@ -110,7 +110,7 @@
   /* ---------- hero slider (home) ---------- */
   (function () {
     var hs = $('#hs'); if (!hs) return;
-    var DUR = 6000, FADE = 1200;
+    var DUR = 5000, FADE = 1200;
     var frame = $('#heroFrame'), track = $('#hsTrack');
     var slides = $$('.hs-slide', hs), dots = $$('.hs-dot');
     var btn = $('#hsPlay'), tag = $('#hsTag'), scan = $('#hsScan');
