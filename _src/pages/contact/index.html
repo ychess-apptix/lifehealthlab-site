@@ -1,0 +1,110 @@
+<!--meta
+title: お問い合わせ
+desc: 商品・サービスに関するご質問、お取引のご相談、商品開発・輸出入、ECサイト構築・運営支援、出版企画のご提案、求人へのご応募など、お気軽にお問い合わせください。
+section: contact
+-->
+<div class="pg-hd">
+  <div class="wrap">
+    <nav class="crumb" aria-label="パンくずリスト"><ol><li><a href="{{root}}index.html">TOP</a></li><li><span aria-current="page">お問い合わせ</span></li></ol></nav>
+    <div class="sec-idx" aria-hidden="true"><span><b>§06</b></span><span class="ruler"></span><span>Contact</span></div>
+    <div class="pg-title">
+      <div><span class="lbl">Contact</span><h1>お問い合わせ</h1></div>
+      <p class="en-big" aria-hidden="true"><b>Form</b>9:00-18:00</p>
+    </div>
+  </div>
+</div>
+
+<section class="sec" style="padding-top:24px" aria-labelledby="form-h">
+  <div class="wrap form-wrap">
+    <aside class="form-aside rv">
+      <p style="color:var(--ink-2)">当社サービスへご興味をお持ちいただき、誠にありがとうございます。商品・サービスに関するご質問、お取引のご相談、商品開発・輸出入のご相談、ECサイト構築・運営支援のご相談、出版企画のご提案、求人へのご応募など、下記フォームよりお気軽にご連絡ください。内容を確認のうえ、担当者より折り返しご連絡いたします。</p>
+      <div class="tel-card"><span class="k">Tel</span><b>【電話番号】</b><span>受付時間：9:00-18:00</span></div>
+      <div class="spec" style="aspect-ratio:4/3"><div class="ph"><img src="{{root}}assets/img/office.jpg" alt="ヘルシーライフ研究所のオフィス受付" loading="lazy" style="object-position:50% 35%"></div><span class="crop" aria-hidden="true"></span><span class="tag">Fig. 06 / Office</span></div>
+    </aside>
+
+    <div>
+      <ol class="steps-ind" aria-label="入力の手順">
+        <li aria-current="step">01 <b>入力</b></li>
+        <li>02 <b>確認</b></li>
+        <li>03 <b>送信完了</b></li>
+      </ol>
+      <!-- 送信先：form の data-endpoint に送信用URL（PHPメール送信・WordPressのREST等）を設定してください。未設定の場合は確認後に完了ページへ移動します。 -->
+      <form class="form" id="contactForm" novalidate data-endpoint="">
+        <div class="f-hd"><span><b id="form-h">お問い合わせフォーム</b></span><span>Form No.06</span></div>
+        <div class="f-bd">
+          <div class="f-input">
+            <div class="field">
+              <span class="fl" id="kind-l">お問い合わせ種類<span class="req">必須</span></span>
+              <fieldset class="choices row" aria-labelledby="kind-l">
+                <label class="ck"><input type="radio" name="kind" value="ご依頼・ご相談" checked required>ご依頼・ご相談</label>
+                <label class="ck"><input type="radio" name="kind" id="t-recruit" value="求人応募">求人応募</label>
+              </fieldset>
+              <p class="err">お問い合わせ種類を選択してください。</p>
+            </div>
+            <div class="field">
+              <label for="f-name">お名前<span class="req">必須</span></label>
+              <input class="inp" id="f-name" name="fullname" type="text" autocomplete="name" placeholder="例）山田 花子" required>
+              <p class="err">お名前を入力してください。</p>
+            </div>
+            <div class="field">
+              <label for="f-company">会社名<span class="opt">任意</span></label>
+              <input class="inp" id="f-company" name="company" type="text" autocomplete="organization" placeholder="例）株式会社〇〇">
+            </div>
+            <div class="field">
+              <label for="f-position">部署・役職<span class="opt">任意</span></label>
+              <input class="inp" id="f-position" name="position" type="text" autocomplete="organization-title" placeholder="例）営業部 部長">
+            </div>
+            <div class="field">
+              <label for="f-tel">電話番号<span class="req">必須</span></label>
+              <input class="inp" id="f-tel" name="tel" type="tel" autocomplete="tel" inputmode="tel" placeholder="例）03-0000-0000" required>
+              <p class="err">電話番号を正しく入力してください。</p>
+            </div>
+            <div class="field">
+              <label for="f-email">メールアドレス<span class="req">必須</span></label>
+              <input class="inp" id="f-email" name="email" type="email" autocomplete="email" placeholder="例）info@example.com" required>
+              <p class="err">メールアドレスを正しく入力してください。</p>
+            </div>
+            <div class="field">
+              <span class="fl" id="topic-l">お問合せ種別<span class="req">必須</span><span class="opt">複数選択可</span></span>
+              <fieldset class="choices" aria-labelledby="topic-l">
+                <label class="ck"><input type="checkbox" name="topic" value="ヘルスケアプロダクト事業（健康食品・食品・化粧品・健康器具）">ヘルスケアプロダクト事業（健康食品・食品・化粧品・健康器具）</label>
+                <label class="ck"><input type="checkbox" name="topic" value="フード＆レストラン事業">フード＆レストラン事業</label>
+                <label class="ck"><input type="checkbox" name="topic" value="出版事業">出版事業</label>
+                <label class="ck"><input type="checkbox" name="topic" value="EC・通信販売事業（ECサイト構築・運営支援を含む）">EC・通信販売事業（ECサイト構築・運営支援を含む）</label>
+                <label class="ck"><input type="checkbox" name="topic" value="その他">その他</label>
+              </fieldset>
+              <p class="err">お問合せ種別を1つ以上選択してください。</p>
+            </div>
+            <div class="field">
+              <label for="f-msg">お問い合わせ内容詳細<span class="opt">任意</span></label>
+              <textarea class="ta" id="f-msg" name="message" placeholder="ご相談内容、ご希望のスケジュール・ご予算などをご記入ください。"></textarea>
+            </div>
+            <div class="agree">
+              <p style="font-size:14px;color:var(--ink-2)">送信いただいた個人情報は、下記「<a class="txt-link" href="#policy">個人情報保護方針</a>」に基づき適切に取り扱います。<br>内容にご同意のうえ送信してください。</p>
+              <label class="ck"><input type="checkbox" name="agree" value="同意する" required>個人情報保護方針に同意する</label>
+              <p class="err">個人情報保護方針への同意が必要です。</p>
+              <div class="form-actions"><button class="btn" type="submit">入力内容を確認する<span class="arr" aria-hidden="true">→</span></button></div>
+            </div>
+          </div>
+
+          <div class="confirm-tbl" aria-live="polite">
+            <p class="lead-c" id="confirmTitle" tabindex="-1">以下の内容で送信します。よろしければ「送信する」を押してください。</p>
+            <table class="dtable"><tbody id="confirmBody"></tbody></table>
+            <div class="agree">
+              <div class="form-actions">
+                <button class="btn ghost" type="button" id="backBtn"><span class="arr" aria-hidden="true">←</span>修正する</button>
+                <button class="btn" type="submit" id="sendBtn">送信する<span class="arr" aria-hidden="true">→</span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <section class="policy-box" id="policy" tabindex="0" aria-labelledby="pp-h">
+        <span class="lbl">Privacy Policy</span>
+        <h2 id="pp-h" style="font-size:22px;margin:6px 0 24px">個人情報保護方針</h2>
+        {{> privacy-body}}
+      </section>
+    </div>
+  </div>
+</section>

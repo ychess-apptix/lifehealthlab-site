@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{fulltitle}}</title>
+<meta name="description" content="{{desc}}">
+<meta name="theme-color" content="#fbfaf6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1822" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="{{ogtype}}">
+<meta property="og:site_name" content="有限会社ヘルシーライフ研究所">
+<meta property="og:title" content="{{fulltitle}}">
+<meta property="og:description" content="{{desc}}">
+<meta property="og:url" content="https://www.lifehealthlab.com/{{path}}">
+<meta property="og:image" content="https://www.lifehealthlab.com/assets/img/hero-research.jpg">
+<meta property="og:locale" content="ja_JP">
+<link rel="canonical" href="https://www.lifehealthlab.com/{{path}}">
+<link rel="icon" href="{{root}}favicon.ico" sizes="any">
+<link rel="icon" href="{{root}}assets/img/logo.png" type="image/png">
+<link rel="apple-touch-icon" href="{{root}}assets/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="{{root}}assets/css/style.css">
+</head>
+<body data-section="{{section}}">
+<a class="skip" href="#main">本文へスキップ</a>
+<header class="hd" id="hd">
+  <div class="wrap hd-in">
+    <a class="brand" href="{{root}}index.html" aria-label="有限会社ヘルシーライフ研究所 トップページ"><img class="logo" src="{{root}}assets/img/logo.png" alt="" width="44" height="44"><span class="nm"><small>Healthy Life Laboratory</small>有限会社ヘルシーライフ研究所</span></a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav" aria-label="メニュー"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h12"/></svg></button>
+    <nav class="nav" id="nav" aria-label="グローバルナビ">
+      <div class="nav-item">
+        <a class="lk" data-section="company" href="{{root}}company/index.html">企業情報<span class="caret-d" aria-hidden="true"></span></a>
+        <ul class="sub">
+          <li><a href="{{root}}company/index.html"><span class="c">04-A</span>事業部</a></li>
+          <li><a href="{{root}}company/message.html"><span class="c">04-B</span>トップメッセージ</a></li>
+          <li><a href="{{root}}company/overview.html"><span class="c">04-C</span>会社概要</a></li>
+        </ul>
+      </div>
+      <div class="nav-item">
+        <a class="lk" data-section="service" href="{{root}}service/index.html">サービス<span class="caret-d" aria-hidden="true"></span></a>
+        <ul class="sub">
+          <li><a href="{{root}}service/index.html"><span class="c">ALL</span>サービス一覧</a></li>
+          <li><a href="{{root}}service/healthcare.html"><span class="c">HC-01</span>ヘルスケアプロダクト事業</a></li>
+          <li><a href="{{root}}service/restaurant.html"><span class="c">FR-02</span>フード＆レストラン事業</a></li>
+          <li><a href="{{root}}service/publishing.html"><span class="c">PB-03</span>出版事業</a></li>
+          <li><a href="{{root}}service/ec.html"><span class="c">EC-04</span>EC・通信販売事業</a></li>
+        </ul>
+      </div>
+      <div class="nav-item"><a class="lk" data-section="recruit" href="{{root}}recruit/index.html">採用情報</a></div>
+      <a class="btn sm" href="{{root}}contact/index.html">お問い合わせ<span class="arr" aria-hidden="true">→</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+{{content}}
+</main>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="{{root}}index.html"><img class="logo" src="{{root}}assets/img/logo.png" alt="" width="44" height="44"><span class="nm"><small>Healthy Life Laboratory</small>有限会社ヘルシーライフ研究所</span></a>
+        <address>〒106-0045<br>東京都港区麻布十番二丁目9番5号 遠上ビル301<br><span class="mono">TEL</span>【電話番号】（受付 9:00-18:00）</address>
+      </div>
+      <nav class="foot-nav" aria-label="フッターナビ">
+        <div>
+          <h2>Company</h2>
+          <ul>
+            <li><a href="{{root}}company/index.html">事業部</a></li>
+            <li><a href="{{root}}company/message.html">トップメッセージ</a></li>
+            <li><a href="{{root}}company/overview.html">会社概要</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Service</h2>
+          <ul>
+            <li><a href="{{root}}service/healthcare.html">ヘルスケアプロダクト事業</a></li>
+            <li><a href="{{root}}service/restaurant.html">フード＆レストラン事業</a></li>
+            <li><a href="{{root}}service/publishing.html">出版事業</a></li>
+            <li><a href="{{root}}service/ec.html">EC・通信販売事業</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Information</h2>
+          <ul>
+            <li><a href="{{root}}recruit/index.html">採用情報</a></li>
+            <li><a href="{{root}}contact/index.html">お問い合わせ</a></li>
+            <li><a href="{{root}}privacy/index.html">プライバシーポリシー</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="copy"><span>© Healthy Life Laboratory Co., Ltd. All Rights Reserved.</span><a class="to-top" href="#main">PAGE TOP <span aria-hidden="true">↑</span></a></div>
+  </div>
+</footer>
+
+<div class="scale" id="scale" aria-hidden="true"><i></i><span>000</span></div>
+<script src="{{root}}assets/js/main.js" defer></script>
+</body>
+</html>
