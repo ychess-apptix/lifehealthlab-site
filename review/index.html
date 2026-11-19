@@ -91,7 +91,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .versions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
 .versions .ver{border-bottom:1px solid var(--line)}
 .ver:nth-child(4n){border-right:0}
-.ver.v11{background:var(--teal-soft)}
+.ver.v12{background:var(--teal-soft)}
 .ver.picked{background:var(--sea-soft)}
 .ver-hd .new{font-size:11px;border-radius:4px;padding:0 6px;background:var(--sea);color:var(--surface)}
 .ver-hd .live{font-size:11px;border-radius:4px;padding:0 6px;background:var(--sunk);color:var(--fg-2)}
@@ -153,7 +153,7 @@ dialog::backdrop{background:rgba(5,12,12,.82)}
 
 <header class="bar">
   <div class="wrap bar-in">
-    <h1><svg class="mark" viewBox="0 0 52 32" aria-hidden="true"><path d="M8 9c10-7 22-7 34-1-9-2-19-2-30 3z" fill="var(--teal)"/><path d="M2 17c14-6 32-6 48 0-15-3-31-2-46 3z" fill="var(--sea)"/><path d="M10 26c9-6 20-6 30-2-8-1-18 0-28 4z" fill="var(--teal)"/></svg>写真レビュー v2〜v11</h1>
+    <h1><svg class="mark" viewBox="0 0 52 32" aria-hidden="true"><path d="M8 9c10-7 22-7 34-1-9-2-19-2-30 3z" fill="var(--teal)"/><path d="M2 17c14-6 32-6 48 0-15-3-31-2-46 3z" fill="var(--sea)"/><path d="M10 26c9-6 20-6 30-2-8-1-18 0-28 4z" fill="var(--teal)"/></svg>写真レビュー v2〜v12</h1>
     <div class="progress" aria-live="polite"><span id="progText">0 / 30 レビュー済み</span><span class="track"><span class="fill" id="progFill"></span></span></div>
     <div class="filters" role="group" aria-label="絞り込み">
       <button class="chip" data-f="all" aria-pressed="true">すべて</button>
@@ -217,6 +217,7 @@ dialog::backdrop{background:rgba(5,12,12,.82)}
             <tr><th scope="row">v9</th><td class="mono">image-prompts-full-site-3rb-v9.md</td><td>レビューの「使う版」とコメントどおりに6枚だけ編集（エプロンのしわ、ノート、青い本、段ボールのふた、縫い付けたロゴ）。</td><td>6枚を修正、残り24枚は選んだ v8-mark／v8-nomark のまま。30枚そろった完成セット。</td></tr>
             <tr><th scope="row">v10</th><td class="mono">（v9 を元に編集）</td><td>v9 の確認で「要修正」とした5枚だけを直す（画面・手の数・本のロゴ・カプセル状の中身・クラフト袋のロゴ）。</td><td>5枚を修正、残り25枚は v9 と同じ。看板の形・天井・服のロゴ有無などの統一は未対応。</td></tr>
             <tr><th scope="row">v11</th><td class="mono">（v10・v2・v4 を元に編集）</td><td>レビューのコメントどおり、エプロンのロゴを CI の刺しゅうロゴで、しわに沿って縫い付けた感じに入れ直す（ロゴを消す→入れるの2段階）。</td><td>3枚を修正（ec-hero・recruit-programs・restaurant-policy）、残り27枚は v10 と同じ。</td></tr>
+            <tr><th scope="row">v12</th><td class="mono">image-prompts-full-site-3rb-v12.md</td><td>No.13・22・28 のエプロンを、v2・v4・v2 の写真を元に CI ガイドのエプロン（ci-05・ci-09 を添付）に合わせて作り直す：深緑の帆布、生成りのひもと×の補強ステッチ、縁のステッチ、ポケット、胸の横組み刺しゅう。</td><td>3枚を修正（div-foodservice・restaurant-policy・recruit-programs）、残り27枚は v11 と同じ。</td></tr>
           </tbody>
         </table>
       </div>
@@ -541,10 +542,16 @@ dialog::backdrop{background:rgba(5,12,12,.82)}
     "restaurant-policy":"v4 の写真を元に、無地のエプロンに CI の刺しゅうロゴを。"
   };
   ROWS.forEach(r => { r.v11 = {s:["g","g","g"], n: V11[r.f] || "v10 と同じ（変更なし）。"}; });
+  const V12 = {
+    "div-foodservice":"v2 の写真を元に、2人のエプロンを CI のエプロン（深緑の帆布・生成りのひもと×ステッチ・ポケット・胸の横組み刺しゅう）に作り直し。",
+    "restaurant-policy":"v4 の写真を元に、エプロンを CI のエプロン（深緑の帆布・生成りのひもと×ステッチ・ポケット・胸の横組み刺しゅう）に作り直し。",
+    "recruit-programs":"v2 の写真を元に、2人のエプロンを CI のエプロン（深緑の帆布・生成りのひもと×ステッチ・胸の横組み刺しゅう）に作り直し。"
+  };
+  ROWS.forEach(r => { r.v12 = {s:["g","g","g"], n: V12[r.f] || "v11 と同じ（変更なし）。"}; });
   const LBL = ["ロゴ","光","会社らしさ"];
   const SYM = {g:"良",w:"要調整",b:"問題"};
-  const VERS = ["v2","v3","v4","v5","v6","v7","v8-nomark","v8-mark","v9","v10","v11"];
-  const PICKS = [["v2","v2"],["v3","v3"],["v4","v4"],["v5","v5"],["v6","v6"],["v7","v7"],["v8-nomark","v8-nomark"],["v8-mark","v8-mark"],["v9","v9"],["v10","v10"],["v11","v11"],["redo","作り直し"]];
+  const VERS = ["v2","v3","v4","v5","v6","v7","v8-nomark","v8-mark","v9","v10","v11","v12"];
+  const PICKS = [["v2","v2"],["v3","v3"],["v4","v4"],["v5","v5"],["v6","v6"],["v7","v7"],["v8-nomark","v8-nomark"],["v8-mark","v8-mark"],["v9","v9"],["v10","v10"],["v11","v11"],["v12","v12"],["redo","作り直し"]];
 
   const $ = (s, r=document) => r.querySelector(s);
   const list = $("#list"), statusEl = $("#status");
@@ -584,7 +591,7 @@ dialog::backdrop{background:rgba(5,12,12,.82)}
       VERS.forEach(v => {
         const d = r[v];
         const box = el("div",{class:"ver "+v+(rv.pick===v?" picked":"")});
-        box.append(el("div",{class:"ver-hd"}, el("b",{text:v}), r.rec===v ? el("span",{class:"rec",text:"おすすめ"}) : null, v==="v11" ? el("span",{class:"new",text:"最新・完成セット"}) : v==="v10" ? el("span",{class:"new",text:"サイト反映中"}) : null));
+        box.append(el("div",{class:"ver-hd"}, el("b",{text:v}), r.rec===v ? el("span",{class:"rec",text:"おすすめ"}) : null, v==="v12" ? el("span",{class:"new",text:"最新・完成セット"}) : v==="v10" ? el("span",{class:"new",text:"サイト反映中"}) : null));
         const btn = el("button",{class:"thumb",type:"button","aria-label":r.f+" "+v+" を拡大"});
         btn.append(el("img",{src:"img/"+v+"/"+r.f+".jpg",alt:r.slot+"（"+v+"）",loading:"lazy",decoding:"async"}));
         btn.addEventListener("click", () => openLb(i, v));
