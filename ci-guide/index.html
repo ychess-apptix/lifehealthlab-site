@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}</style>
+</head>
+<body>
+<title>ヘルシーライフ研究所 CI ガイド</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<style>
+/* Layout: brand-book reference — side index on wide screens, sections stacked: logo files → colour → rules → application by material → reference photos → office → checklist */
+:root{
+  --bg:#f7f5f0;          /* warm white, the CI's own wall colour */
+  --surface:#ffffff;
+  --sunk:#eeece5;
+  --fg:#1d3433;
+  --fg-2:#4d6261;
+  --muted:#7b8b89;
+  --line:#dcd9d0;
+  --teal:#3888a0;        /* CI teal-blue */
+  --sea:#70b8a0;         /* CI sea-green */
+  --deep:#2c6e84;        /* CI deep teal */
+  --forest:#2f4a3c;      /* apron */
+  --oak:#d9bf96;         /* light oak */
+  --glass:#cfe3e6;
+  --plant:#8fae7c;
+  --ok:#2f7f55; --ok-soft:#e3f1e8; --ng:#b04637; --ng-soft:#f7e4e0; --warn:#a8701b; --warn-soft:#faefdb;
+  --accent:var(--deep);
+  --f-body:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  --shadow:0 1px 2px rgba(29,52,51,.06),0 10px 28px -18px rgba(29,52,51,.35);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111a19; --surface:#18241f; --sunk:#1f2d29; --fg:#e6eeec; --fg-2:#aab9b6; --muted:#7f928f; --line:#2c3c38;
+    --accent:#7cc3d8; --ok:#7fcf9d; --ok-soft:#183026; --ng:#ee8d7d; --ng-soft:#3a201b; --warn:#e5b45f; --warn-soft:#33281a;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px -16px rgba(0,0,0,.7);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111a19; --surface:#18241f; --sunk:#1f2d29; --fg:#e6eeec; --fg-2:#aab9b6; --muted:#7f928f; --line:#2c3c38;
+  --accent:#7cc3d8; --ok:#7fcf9d; --ok-soft:#183026; --ng:#ee8d7d; --ng-soft:#3a201b; --warn:#e5b45f; --warn-soft:#33281a;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px -16px rgba(0,0,0,.7);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.8;margin:0}
+h1,h2,h3{margin:0;line-height:1.35;text-wrap:balance}
+p{margin:0}
+img{max-width:100%}
+.mono{font-family:var(--f-mono)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button{font:inherit;color:inherit;cursor:pointer}
+
+.wrap{max-width:1200px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* header */
+.top{border-bottom:1px solid var(--line);background:var(--surface)}
+.top-in{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 40px;align-items:end;padding-block:40px 32px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase}
+.top h1{font-size:clamp(26px,4vw,38px);font-weight:700;margin-top:6px;letter-spacing:.02em}
+.lead{color:var(--fg-2);max-width:62ch;margin-top:12px}
+.top-logo{width:min(320px,70vw);background:#fff;border-radius:10px;padding:10px 14px;border:1px solid var(--line)}
+.meta{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:16px;font-size:12.5px;color:var(--muted)}
+
+/* layout */
+.layout{display:grid;grid-template-columns:200px minmax(0,1fr);gap:48px;padding-block:36px 80px}
+.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 24px);align-self:start;font-size:13.5px}
+.toc ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;border-left:1px solid var(--line)}
+.toc a{display:block;padding:4px 0 4px 14px;color:var(--fg-2);text-decoration:none;margin-left:-1px;border-left:2px solid transparent}
+.toc a:hover{color:var(--fg);border-left-color:var(--accent)}
+.toc .n{font-family:var(--f-mono);font-size:11px;color:var(--muted);margin-right:6px}
+main{display:flex;flex-direction:column;gap:64px;min-width:0}
+section{display:flex;flex-direction:column;gap:20px;scroll-margin-top:24px}
+.sec-hd{display:flex;flex-direction:column;gap:4px;border-top:2px solid var(--fg);padding-top:14px}
+.sec-hd .n{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;color:var(--accent)}
+.sec-hd h2{font-size:22px;font-weight:700}
+.sec-hd p{color:var(--fg-2);max-width:66ch}
+
+/* logo files */
+.logos{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:16px}
+.lg{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.lg-art{aspect-ratio:16/9;display:grid;place-items:center;padding:18px;background:#fff;border-bottom:1px solid var(--line)}
+.lg-art.forest{background:var(--forest)}
+.lg-art.kraft{background:#c9a676}
+.lg-art.linen{background:#efe9dc}
+.lg-art img{max-height:100%;object-fit:contain}
+.lg-body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px}
+.lg-body .file{font-family:var(--f-mono);font-size:12.5px;font-weight:500;word-break:break-all}
+.lg-body .use{font-size:13.5px;color:var(--fg-2)}
+.badge{align-self:flex-start;font-size:11.5px;border-radius:4px;padding:1px 8px;background:var(--sunk);color:var(--fg-2)}
+.badge.main{background:var(--deep);color:#fff}
+
+/* colours */
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,170px),1fr));gap:12px}
+.sw{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+.sw .chip{height:88px;border-bottom:1px solid var(--line)}
+.sw-b{padding:10px 12px 12px;display:flex;flex-direction:column;gap:2px}
+.sw-b b{font-size:14px}
+.sw-b .use{font-size:12.5px;color:var(--fg-2)}
+.hex{display:flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:13px}
+.copy{border:1px solid var(--line);background:var(--bg);border-radius:4px;padding:0 7px;font-size:11px;color:var(--fg-2)}
+.copy.done{color:var(--ok);border-color:var(--ok)}
+
+/* rules */
+.rules{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px;align-items:start}
+.space{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.space-art{position:relative;background:#fff;border-radius:6px;display:grid;place-items:center;padding:28px}
+.space-zone{position:relative;outline:1.5px dashed var(--teal);outline-offset:0;padding:0;width:min(260px,100%)}
+.space-zone img{display:block;width:100%}
+.space-zone .h{position:absolute;font-family:var(--f-mono);font-size:11px;color:var(--teal);background:#fff;padding:0 4px}
+.space-zone .h.t{top:-9px;left:50%;transform:translateX(-50%)}
+.space-zone .h.l{left:-12px;top:50%;transform:translateY(-50%)}
+.space p{font-size:13.5px;color:var(--fg-2)}
+.rule-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.rule-list li{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:14px}
+.rule-list b{display:block;font-size:14.5px}
+.rule-list span{color:var(--fg-2);font-size:13.5px}
+.donts{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,150px),1fr));gap:8px}
+.dont{background:var(--ng-soft);color:var(--ng);border-radius:6px;padding:8px 10px;font-size:13px;display:flex;gap:6px;align-items:flex-start}
+.dont::before{content:"×";font-weight:700}
+
+/* table */
+.tbl-scroll{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.06em;background:var(--sunk)}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:0}
+tbody th{font-weight:700;white-space:nowrap}
+td .mono{font-size:12.5px}
+.pill{display:inline-block;font-size:12px;border-radius:999px;padding:0 9px;white-space:nowrap}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.ng{background:var(--ng-soft);color:var(--ng)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+
+/* usage cards: CI sample + site photo + spec */
+.usages{display:flex;flex-direction:column;gap:14px}
+.us{background:var(--surface);border:1px solid var(--line);border-radius:10px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.05fr);overflow:hidden}
+.us figure{margin:0;display:flex;flex-direction:column;border-right:1px solid var(--line);min-width:0}
+.us figure button{padding:0;border:0;background:var(--sunk);display:block;aspect-ratio:3/2;width:100%;overflow:hidden}
+.us figure button img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.us figure button:hover img{transform:scale(1.03)}
+.us figcaption{font-size:11.5px;color:var(--muted);padding:6px 10px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.us figcaption .k{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;border-radius:3px;padding:0 5px;background:var(--sunk);color:var(--fg-2)}
+.us figcaption .k.site{background:var(--deep);color:#fff}
+.us .none{aspect-ratio:3/2;display:grid;place-items:center;background:var(--sunk);color:var(--muted);font-size:12.5px;padding:12px;text-align:center}
+.us-b{padding:14px 16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.us-b h3{font-size:17px}
+.us-b dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;font-size:13.5px}
+.us-b dt{color:var(--muted);font-size:12px;padding-top:2px;white-space:nowrap}
+.us-b dd{margin:0}
+.us-b dd.mono{font-size:12px;word-break:break-all}
+@media (max-width:1100px){
+  .us{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .us-b{grid-column:1/-1;border-top:1px solid var(--line)}
+  .us figure:nth-of-type(2){border-right:0}
+}
+@media (max-width:520px){
+  .us{grid-template-columns:1fr}
+  .us figure{border-right:0;border-bottom:1px solid var(--line)}
+}
+
+/* reference photos */
+.refs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:16px}
+.ref{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.ref button{padding:0;border:0;background:var(--sunk);display:block;aspect-ratio:3/2;width:100%;overflow:hidden}
+.ref button img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.ref button:hover img{transform:scale(1.03)}
+.ref-b{padding:10px 14px 14px;display:flex;flex-direction:column;gap:4px}
+.ref-b b{font-size:14.5px}
+.ref-b .file{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);word-break:break-all}
+.ref-b p{font-size:13px;color:var(--fg-2)}
+
+/* office mix */
+.mix{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:14px}
+.mix-bar{display:flex;height:44px;border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.mix-bar span{display:block;height:100%}
+.mix-legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr));gap:10px}
+.mix-legend div{display:flex;gap:10px;align-items:flex-start;font-size:13.5px}
+.mix-legend i{flex:none;width:14px;height:14px;border-radius:3px;margin-top:5px;border:1px solid var(--line)}
+.mix-legend b{font-variant-numeric:tabular-nums}
+.mix-legend span{color:var(--fg-2)}
+
+/* where */
+.where{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.where > div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.where h3{font-size:15px;margin-bottom:8px;display:flex;gap:8px;align-items:center}
+.where ul{margin:0;padding-left:1.1em;color:var(--fg-2);font-size:14px}
+.where li+li{margin-top:4px}
+
+/* checklist + notes */
+.check{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.check li{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:9px 12px 9px 38px;position:relative;font-size:14px}
+.check li::before{content:"";position:absolute;left:12px;top:13px;width:14px;height:14px;border:1.5px solid var(--accent);border-radius:3px}
+.note{background:var(--warn-soft);border-radius:10px;padding:14px 18px;font-size:14px;color:var(--fg)}
+.note b{color:var(--warn)}
+
+/* lightbox */
+dialog{border:0;padding:0;background:transparent;max-width:min(96vw,1400px);max-height:94vh}
+dialog::backdrop{background:rgba(6,14,13,.85)}
+.lb{display:flex;flex-direction:column;gap:8px;align-items:center}
+.lb img{max-width:min(96vw,1400px);max-height:84vh;border-radius:6px;display:block}
+.lb-bar{display:flex;gap:8px;align-items:center;color:#e9f1ef;font-size:13px;flex-wrap:wrap;justify-content:center}
+.lb-bar button{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:6px;padding:4px 12px}
+
+@media (max-width:900px){
+  .layout{grid-template-columns:1fr;gap:28px}
+  .toc{position:static}
+  .toc ol{flex-direction:row;flex-wrap:wrap;border-left:0;gap:6px}
+  .toc a{border:1px solid var(--line);border-radius:999px;padding:2px 12px;margin:0;background:var(--surface)}
+  .rules,.where,.check{grid-template-columns:1fr}
+  .top-in{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<header class="top">
+  <div class="wrap top-in">
+    <div>
+      <p class="eyebrow">Corporate Identity · Reference</p>
+      <h1>ヘルシーライフ研究所 CI ガイド</h1>
+      <p class="lead">ロゴ・色・付け方・使用見本を1か所にまとめた参照用ページです。写真の生成（ChatGPT）、印刷物、サイト制作のときに、ここにあるロゴと見本をそのまま使ってください。</p>
+      <div class="meta"><span>元データ：<span class="mono">corporate-identity-chatgpt.md</span></span><span>ロゴファイル：<span class="mono">ci/</span></span><span>見本画像：<span class="mono">ci/references/</span></span></div>
+    </div>
+    <img class="top-logo" src="img/lockup-horizontal-color-on-white.png" alt="ヘルシーライフ研究所 ロゴ（横組み）">
+  </div>
+</header>
+
+<div class="wrap layout">
+  <nav class="toc" aria-label="目次">
+    <ol>
+      <li><a href="#logo"><span class="n">01</span>ロゴファイル</a></li>
+      <li><a href="#color"><span class="n">02</span>色</a></li>
+      <li><a href="#rules"><span class="n">03</span>ロゴの決まり</a></li>
+      <li><a href="#apply"><span class="n">04</span>素材ごとの付け方</a></li>
+      <li><a href="#refs"><span class="n">05</span>使用見本</a></li>
+      <li><a href="#where"><span class="n">06</span>使う場所・使わない場所</a></li>
+      <li><a href="#office"><span class="n">07</span>オフィスの雰囲気</a></li>
+      <li><a href="#check"><span class="n">08</span>チェックリスト</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <section id="logo">
+      <div class="sec-hd"><span class="n">01</span><h2>ロゴファイル</h2><p>マークは「上から青・緑・青」の3本の波。社名は Noto Sans JP Medium で組んだ「ヘルシーライフ研究所」の10文字です。どの場面でも、このファイルを使い、描き直しません。</p></div>
+      <div class="logos">
+        <article class="lg"><div class="lg-art"><img src="img/lockup-package-color.png" alt="縦組み・パッケージ用（カラー）"></div><div class="lg-body"><span class="badge main">パッケージ用</span><span class="file">lockup-package-color.png</span><p class="use">マークの下に社名。社名はマークと同じ幅。パウチ・化粧品・白衣。</p></div></article>
+        <article class="lg"><div class="lg-art linen"><img src="img/lockup-package-teal.png" alt="縦組み・1色（ディープティール）"></div><div class="lg-body"><span class="badge">1色・縦組み</span><span class="file">lockup-package-teal.png</span><p class="use">上と同じ形のディープティール1色。のれんの染め、スタンプ。</p></div></article>
+        <article class="lg"><div class="lg-art"><img src="img/lockup-horizontal-color.png" alt="横組み（カラー）"></div><div class="lg-body"><span class="badge main">基本形</span><span class="file">lockup-horizontal-color.png</span><p class="use">マーク（2色）の右に社名。受付サイン、案内。</p></div></article>
+        <article class="lg"><div class="lg-art kraft"><img src="img/lockup-horizontal-teal.png" alt="横組み・1色（ディープティール）"></div><div class="lg-body"><span class="badge">1色・横組み</span><span class="file">lockup-horizontal-teal.png</span><p class="use">マークも社名もディープティール。段ボール、紙袋、スタンプ。</p></div></article>
+        <article class="lg"><div class="lg-art forest"><img src="img/lockup-horizontal-white.png" alt="横組み・白"></div><div class="lg-body"><span class="badge">白・横組み</span><span class="file">lockup-horizontal-white.png</span><p class="use">深緑のエプロン（白い刺しゅう）、ガラスのシート、濃い色の面。</p></div></article>
+        <article class="lg"><div class="lg-art"><img src="img/lockup-stacked-color.png" alt="縦組み（社名が広いもの）"></div><div class="lg-body"><span class="badge">参考</span><span class="file">lockup-stacked-color.png</span><p class="use">社名をマークより広く組んだ縦組み。現在はパッケージ用を優先。</p></div></article>
+      </div>
+    </section>
+
+    <section id="color">
+      <div class="sec-hd"><span class="n">02</span><h2>色</h2><p>ブランド色は3色。布・木・壁の色は「素材の色」として使い、ロゴの色にはしません。</p></div>
+      <div class="swatches" id="swatches"></div>
+    </section>
+
+    <section id="rules">
+      <div class="sec-hd"><span class="n">03</span><h2>ロゴの決まり</h2><p>ロゴは小さく、周りを広く空けます。面の大部分は無地のままにします。</p></div>
+      <div class="rules">
+        <div class="space">
+          <div class="space-art"><div class="space-zone"><img src="img/lockup-package-color-on-white.png" alt="余白の例：パッケージ用ロゴ"><span class="h t">≥ H</span><span class="h l">≥ H</span></div></div>
+          <p>点線の内側には何も置きません。H はマークの高さ。ファスナー・小窓・縁・ポケット・えり・縫い目・のれんの切れ目に近づけないでください。</p>
+        </div>
+        <ul class="rule-list">
+          <li><b>マークの形は変えない</b><span>上から青・緑・青。線の太さ・カーブ・色の順番はそのまま。</span></li>
+          <li><b>社名は10文字だけ</b><span>「ヘルシーライフ研究所」。英語・商品名・キャッチコピーは入れない。</span></li>
+          <li><b>パッケージ・白衣・のれんは縦組み</b><span>マークの下に社名。社名の幅をマークの幅に合わせる。</span></li>
+          <li><b>それ以外は横組み</b><span>サイン・段ボール・エプロンはマークの右に社名。</span></li>
+          <li><b>最小サイズ</b><span>パウチは幅 3cm 以上、刺しゅうは幅 7cm 以上。</span></li>
+        </ul>
+      </div>
+      <div class="donts" aria-label="やってはいけないこと">
+        <div class="dont">マークを描き直す</div>
+        <div class="dont">色を変える</div>
+        <div class="dont">光らせる</div>
+        <div class="dont">影・縁取りを付ける</div>
+        <div class="dont">斜めにゆがめる</div>
+        <div class="dont">1枚の写真で何度も繰り返す</div>
+      </div>
+    </section>
+
+    <section id="apply">
+      <div class="sec-hd"><span class="n">04</span><h2>素材ごとの付け方</h2><p>ロゴは物の上に「貼る」のではなく、その素材の作り方で付けます。写真では面の角度・光・しわに沿わせます。</p></div>
+      <p style="font-size:13.5px;color:var(--fg-2)">左が CI の見本、右がサイト（v5）で実際に使っている写真です。写真をクリックすると拡大します。</p>
+      <div class="usages" id="usages"></div>
+    </section>
+
+    <section id="refs">
+      <div class="sec-hd"><span class="n">05</span><h2>使用見本（全11枚）</h2><p>ChatGPT で作った見本画像の一覧です。写真を作るときは、写る物の見本を添付します（1枚につき3枚まで）。クリックで拡大します。</p></div>
+      <div class="refs" id="refs-grid"></div>
+    </section>
+
+    <section id="where">
+      <div class="sec-hd"><span class="n">06</span><h2>使う場所・使わない場所</h2><p>ロゴは「会社の物」として自然にある場所だけに入れます。</p></div>
+      <div class="where">
+        <div>
+          <h3><span class="pill ok">使う</span></h3>
+          <ul>
+            <li>商品パッケージ（パウチ）・化粧品の容器</li>
+            <li>出荷用の段ボール・紙袋</li>
+            <li>白衣（左胸）・エプロン（胸）</li>
+            <li>オフィスの受付サイン・ガラスの仕切り</li>
+            <li>店舗ののれん</li>
+          </ul>
+        </div>
+        <div>
+          <h3><span class="pill ng">使わない</span></h3>
+          <ul>
+            <li>本・ノートの表紙</li>
+            <li>パソコン・スマートフォンの画面</li>
+            <li>普通の壁（大きな壁のマーク）</li>
+            <li>カップ・グラス・食器</li>
+            <li>1枚の写真の中で何度も繰り返す</li>
+          </ul>
+        </div>
+      </div>
+      <p class="note"><b>確認中：</b>白衣とエプロンのロゴは、安藤さんの最終確認を待っています。以前の方針（案B）は「パッケージとオフィス・店舗のサインだけ」でした。</p>
+    </section>
+
+    <section id="office">
+      <div class="sec-hd"><span class="n">07</span><h2>オフィスの雰囲気</h2><p>「ガラス・木・緑」で、どれも主張しすぎない量に。大きな窓からのやわらかい自然光、温かみのある白。</p></div>
+      <div class="mix">
+        <div class="mix-bar" role="img" aria-label="画面の中の割合：壁と床 約50%、木 約30%、ガラス 約12%、植物 約8%">
+          <span style="width:50%;background:#f1ede4"></span><span style="width:30%;background:var(--oak)"></span><span style="width:12%;background:var(--glass)"></span><span style="width:8%;background:var(--plant)"></span>
+        </div>
+        <div class="mix-legend">
+          <div><i style="background:#f1ede4"></i><p><b>約50%</b> 壁と床<br><span>ウォームホワイトの壁、明るい床。明るさと清潔感。</span></p></div>
+          <div><i style="background:var(--oak)"></i><p><b>約30%</b> 明るいオーク材<br><span>受付カウンター、机、棚、壁の木のパネル。</span></p></div>
+          <div><i style="background:var(--glass)"></i><p><b>約10〜20%</b> ガラス<br><span>細い黒またはオークの枠の仕切り。奥まで見通せる。</span></p></div>
+          <div><i style="background:var(--plant)"></i><p><b>約10%</b> 植物<br><span>鉢植えを数か所。壁一面の緑にはしない。</span></p></div>
+        </div>
+        <p style="font-size:13.5px;color:var(--fg-2)">ブランド色（ティール・シーグリーン）は、クッション・ファイル・マグカップなどにほんの少しだけ。</p>
+      </div>
+    </section>
+
+    <section id="check">
+      <div class="sec-hd"><span class="n">08</span><h2>チェックリスト</h2><p>見本や写真ができたら、この順に確認します。</p></div>
+      <ul class="check">
+        <li>マークが添付どおり（青・緑・青、太さとカーブも同じ）</li>
+        <li>社名が正しい10文字で、崩れていない</li>
+        <li>パッケージ・白衣・のれんは社名がマークの下、同じ幅</li>
+        <li>ロゴの周りにマークの高さ以上の余白がある</li>
+        <li>社名とマーク以外の文字がない</li>
+        <li>素材に合った付け方（印刷・インク・刺しゅう・切り文字）</li>
+        <li>ロゴが物に対して大きすぎない</li>
+        <li>オフィスは「ガラス・木・緑」がどれも主張しすぎない</li>
+        <li>エプロンは深緑（茶色・黒のエプロンがない）</li>
+        <li>CG・3D の作り物っぽさがない</li>
+      </ul>
+      <p class="note"><b>注意：</b>ロゴファイルは 256px のロゴ画像から作っています。正式な印刷物には、元のデザインデータ（AI・SVG）から作り直してください。</p>
+    </section>
+  </main>
+</div>
+
+<dialog id="lb" aria-label="見本の拡大表示">
+  <div class="lb">
+    <img id="lbImg" alt="">
+    <div class="lb-bar"><button id="lbPrev" type="button">← 前</button><span id="lbCap"></span><button id="lbNext" type="button">次 →</button><button id="lbClose" type="button">閉じる</button></div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  "use strict";
+  const COLORS = [
+    {name:"ティールブルー",hex:"#3888A0",use:"マークの上下の波"},
+    {name:"シーグリーン",hex:"#70B8A0",use:"マークの真ん中の波"},
+    {name:"ディープティール",hex:"#2C6E84",use:"社名の文字、1色印刷"},
+    {name:"フォレストグリーン",hex:"#2F4A3C",use:"エプロンの布地（前後）"},
+    {name:"ウォームホワイト",hex:"#F7F5F0",use:"壁、白衣、パウチ（前後）"},
+    {name:"ライトオーク",hex:"#D9BF96",use:"家具・受付・棚（素材の目安）"}
+  ];
+  const REFS = [
+    {f:"ci-01-pouch-front",t:"パウチ（正面）",d:"緑・黄・赤の3種。小窓と色の帯、上半分に小さな縦組みロゴ。"},
+    {f:"ci-01-pouch-angle",t:"パウチ（斜め）",d:"ロゴがパウチのカーブに沿って印刷されている例。"},
+    {f:"ci-02-cosmetics",t:"化粧品",d:"マットな白いジャーとチューブ。縦組みロゴを小さく。"},
+    {f:"ci-03-carton",t:"段ボール（単体）",d:"ディープティール1色のインク。繊維が透け、少しかすれる。"},
+    {f:"ci-03-carton-stack",t:"段ボール（積んだ状態）",d:"箱ごとにインクの濃さが少しずつ違う。"},
+    {f:"ci-04-labcoat",t:"白衣",d:"左胸のポケットの上に、縦組みロゴの刺しゅう。"},
+    {f:"ci-05-apron",t:"エプロン",d:"深緑の帆布に、横組みロゴの白い刺しゅう。"},
+    {f:"ci-06-reception-sign",t:"受付サイン",d:"オークの壁パネルに、マットな切り文字。控えめな大きさ。"},
+    {f:"ci-07-office-reception-area",t:"オフィス（受付まわり）",d:"ガラス・木・緑のバランス。ガラスにすりガラス調のロゴ。"},
+    {f:"ci-07-office-workspace",t:"オフィス（執務スペース）",d:"同じ内装の執務スペース。ロゴなし。"},
+    {f:"ci-08-noren",t:"のれん",d:"麻にディープティールの染め。右の布の下側に小さく。"}
+  ];
+  // each usage: CI sample (ref) + where it appears on the site (site, v5 photo)
+  const USAGES = [
+    {t:"パウチ",file:"lockup-package-color",how:"マットフィルムに印刷。しわ・カーブ・光に沿う",size:"上半分の中央、パウチ幅の約20%。ファスナー・小窓から離す",ref:"ci-01-pouch-front",site:"hero-product",siteName:"トップ／スライダー2「製品」"},
+    {t:"化粧品",file:"lockup-package-color",how:"マットな白い容器に印刷",size:"チューブ幅の約25%／ジャーは正面に小さく",ref:"ci-02-cosmetics",site:"svc-healthcare",siteName:"事業内容／ヘルスケア"},
+    {t:"段ボール",file:"lockup-horizontal-teal",how:"ディープティール1色のインク。繊維が透け、少しかすれる",size:"長い面の左上、面の幅の約35%＋ふたに小さく",ref:"ci-03-carton",site:"ec-hero",siteName:"EC事業／ページ上部"},
+    {t:"白衣",file:"lockup-package-color",how:"刺しゅう。糸の質感があり、布のしわに沿う",size:"左胸のポケットの上、幅 約6〜7cm",ref:"ci-04-labcoat",site:"healthcare-policy",siteName:"ヘルスケア事業／方針"},
+    {t:"エプロン",file:"lockup-horizontal-white",how:"深緑の帆布（#2F4A3C）に白い刺しゅう",size:"胸の中央、幅 約10cm",ref:"ci-05-apron",site:"restaurant-policy",siteName:"飲食事業／方針"},
+    {t:"受付サイン",file:"lockup-horizontal-color",how:"厚み約5mmのマットな切り文字。壁に小さな影",size:"目の高さ、幅 約60cm（壁の一部だけ）",ref:"ci-06-reception-sign",site:"overview-hero",siteName:"会社概要／ページ上部"},
+    {t:"ガラス・内装",file:"lockup-horizontal-white",how:"すりガラス調のシート。内装はガラス・木・緑",size:"目の高さ、幅 約40cm",ref:"ci-07-office-reception-area",site:"top-office",siteName:"トップ／オフィス"},
+    {t:"のれん",file:"lockup-package-teal",how:"麻にディープティールの染め。少し色あせる",size:"右の布の下側、幅 約18cm。切れ目・すそから離す",ref:"ci-08-noren",site:"restaurant-hero",siteName:"飲食事業／ページ上部"}
+  ];
+  const $ = s => document.querySelector(s);
+  function el(tag, attrs, ...kids){ const e=document.createElement(tag); for(const [k,v] of Object.entries(attrs||{})){ if(k==="class") e.className=v; else if(k==="text") e.textContent=v; else e.setAttribute(k,v);} kids.forEach(k=>k!=null&&e.append(k)); return e; }
+
+  const sw = $("#swatches");
+  COLORS.forEach(c => {
+    const btn = el("button",{class:"copy",type:"button","aria-label":c.name+" の色コードをコピー",text:"コピー"});
+    btn.addEventListener("click", async () => {
+      try { await navigator.clipboard.writeText(c.hex); btn.textContent="コピー済み"; btn.classList.add("done"); setTimeout(()=>{btn.textContent="コピー";btn.classList.remove("done");},1500); }
+      catch(e){ const r=document.createRange(); r.selectNodeContents(code); const s=getSelection(); s.removeAllRanges(); s.addRange(r); }
+    });
+    const code = el("span",{text:c.hex});
+    const chip = el("div",{class:"chip"}); chip.style.background = c.hex;
+    sw.append(el("article",{class:"sw"}, chip, el("div",{class:"sw-b"}, el("b",{text:c.name}), el("div",{class:"hex"}, code, btn), el("span",{class:"use",text:c.use}))));
+  });
+
+  // lightbox works over one list; each section opens its own list
+  let LIST = [];
+  function thumb(list, i, item){
+    const b = el("button",{type:"button","aria-label":item.cap+" を拡大"}, el("img",{src:item.src,alt:item.cap,loading:"lazy",decoding:"async"}));
+    b.addEventListener("click", () => open(list, i));
+    return b;
+  }
+
+  const UL = [];
+  USAGES.forEach(u => { UL.push({src:"img/"+u.ref+".jpg",cap:u.t+" — CI 見本"}); UL.push({src:"img/site/"+u.site+".jpg",cap:u.t+" — サイト："+u.siteName}); });
+  const us = $("#usages");
+  USAGES.forEach((u,k) => {
+    const f1 = el("figure",{}, thumb(UL, k*2, UL[k*2]), el("figcaption",{}, el("span",{class:"k",text:"CI 見本"}), el("span",{text:u.ref+".png"})));
+    const f2 = el("figure",{}, thumb(UL, k*2+1, UL[k*2+1]), el("figcaption",{}, el("span",{class:"k site",text:"サイト v5"}), el("span",{text:u.siteName})));
+    const dl = el("dl",{},
+      el("dt",{text:"ロゴ"}), el("dd",{class:"mono",text:u.file+".png"}),
+      el("dt",{text:"付け方"}), el("dd",{text:u.how}),
+      el("dt",{text:"大きさ・位置"}), el("dd",{text:u.size}));
+    us.append(el("article",{class:"us"}, f1, f2, el("div",{class:"us-b"}, el("h3",{text:u.t}), dl)));
+  });
+
+  const RL = REFS.map(r => ({src:"img/"+r.f+".jpg",cap:r.t}));
+  const grid = $("#refs-grid");
+  REFS.forEach((r,i) => {
+    grid.append(el("article",{class:"ref"}, thumb(RL, i, RL[i]), el("div",{class:"ref-b"}, el("b",{text:r.t}), el("span",{class:"file",text:"ci/references/"+r.f+".png"}), el("p",{text:r.d}))));
+  });
+
+  const lb=$("#lb"), img=$("#lbImg"), cap=$("#lbCap"); let cur=0;
+  function show(){ const r=LIST[cur]; img.src=r.src; img.alt=r.cap; cap.textContent=(cur+1)+" / "+LIST.length+"　"+r.cap; }
+  function open(list, i){ LIST=list; cur=i; show(); if(lb.showModal) lb.showModal(); }
+  $("#lbPrev").addEventListener("click",()=>{cur=(cur+LIST.length-1)%LIST.length;show();});
+  $("#lbNext").addEventListener("click",()=>{cur=(cur+1)%LIST.length;show();});
+  $("#lbClose").addEventListener("click",()=>lb.close());
+  lb.addEventListener("click",e=>{ if(e.target===lb) lb.close(); });
+  lb.addEventListener("keydown",e=>{ if(e.key==="ArrowLeft") $("#lbPrev").click(); if(e.key==="ArrowRight") $("#lbNext").click(); });
+})();
+</script>
+
+</body>
+</html>
