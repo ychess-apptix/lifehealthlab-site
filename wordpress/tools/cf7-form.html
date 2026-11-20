@@ -1,0 +1,24 @@
+<div class="f-hd"><span><b id="form-h">お問い合わせフォーム</b></span><span>Form No.06</span></div>
+<div class="f-bd">
+<div class="f-input">
+<div class="field"><span class="fl">お問い合わせ種類<span class="req">必須</span></span><div class="choices row">[radio kind use_label_element default:1 "ご依頼・ご相談" "求人応募"]</div><p class="err">お問い合わせ種類を選択してください。</p></div>
+<div class="field"><label for="f-name">お名前<span class="req">必須</span></label><div>[text* fullname id:f-name class:inp autocomplete:name placeholder "例）山田 花子"]</div><p class="err">お名前を入力してください。</p></div>
+<div class="field"><label for="f-company">会社名<span class="opt">任意</span></label><div>[text company id:f-company class:inp autocomplete:organization placeholder "例）株式会社〇〇"]</div></div>
+<div class="field"><label for="f-position">部署・役職<span class="opt">任意</span></label><div>[text position id:f-position class:inp autocomplete:organization-title placeholder "例）営業部 部長"]</div></div>
+<div class="field"><label for="f-tel">電話番号<span class="req">必須</span></label><div>[tel* tel id:f-tel class:inp autocomplete:tel placeholder "例）03-0000-0000"]</div><p class="err">電話番号を正しく入力してください。</p></div>
+<div class="field"><label for="f-email">メールアドレス<span class="req">必須</span></label><div>[email* email id:f-email class:inp autocomplete:email placeholder "例）info@example.com"]</div><p class="err">メールアドレスを正しく入力してください。</p></div>
+<div class="field"><span class="fl">お問合せ種別<span class="req">必須</span><span class="opt">複数選択可</span></span><div class="choices">[checkbox* topic use_label_element "ヘルスケアプロダクト事業（健康食品・食品・化粧品・健康器具）" "フード＆レストラン事業" "出版事業" "EC・通信販売事業（ECサイト構築・運営支援を含む）" "その他"]</div><p class="err">お問合せ種別を1つ以上選択してください。</p></div>
+<div class="field"><label for="f-msg">お問い合わせ内容詳細<span class="opt">任意</span></label><div>[textarea message id:f-msg class:ta placeholder "ご相談内容、ご希望のスケジュール・ご予算などをご記入ください。"]</div></div>
+<div class="agree">
+<p style="font-size:14px;color:var(--ink-2)">送信いただいた個人情報は、下記「<a class="txt-link" href="#policy">個人情報保護方針</a>」に基づき適切に取り扱います。<br>内容にご同意のうえ送信してください。</p>
+[acceptance agree]個人情報保護方針に同意する[/acceptance]
+<p class="err">個人情報保護方針への同意が必要です。</p>
+<div class="form-actions"><button class="btn" type="submit">入力内容を確認する</button></div>
+</div>
+</div>
+<div class="confirm-tbl" aria-live="polite">
+<p class="lead-c" id="confirmTitle" tabindex="-1">以下の内容で送信します。よろしければ「送信する」を押してください。</p>
+<table class="dtable"><tbody id="confirmBody"></tbody></table>
+<div class="agree"><div class="form-actions"><button class="btn ghost no-arr back" type="button" id="backBtn"><span class="arr" aria-hidden="true">←</span>修正する</button><button class="btn" type="submit" id="sendBtn">送信する</button></div></div>
+</div>
+</div>

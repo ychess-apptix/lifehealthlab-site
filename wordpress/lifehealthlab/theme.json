@@ -1,0 +1,46 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": false,
+    "useRootPaddingAwareAlignments": false,
+    "layout": { "contentSize": "1200px", "wideSize": "1200px" },
+    "color": {
+      "custom": false,
+      "customGradient": false,
+      "defaultPalette": false,
+      "defaultGradients": false,
+      "defaultDuotone": false,
+      "palette": [
+        { "slug": "ink", "name": "Ink", "color": "#1d3550" },
+        { "slug": "ink-2", "name": "Ink 2", "color": "#56687c" },
+        { "slug": "blue", "name": "Lab Blue", "color": "#24507c" },
+        { "slug": "green", "name": "Chlorophyll Green", "color": "#3d8b4f" },
+        { "slug": "paper", "name": "Paper", "color": "#fbfaf6" }
+      ]
+    },
+    "typography": {
+      "customFontSize": false,
+      "defaultFontSizes": false,
+      "dropCap": false,
+      "fontSizes": [],
+      "fontFamilies": [
+        { "slug": "jp", "name": "Noto Sans JP", "fontFamily": "\"Noto Sans JP\",\"Hiragino Kaku Gothic ProN\",\"Yu Gothic\",sans-serif" },
+        { "slug": "mono", "name": "IBM Plex Mono", "fontFamily": "\"IBM Plex Mono\",ui-monospace,Consolas,monospace" }
+      ]
+    },
+    "spacing": { "blockGap": false, "margin": false, "padding": false, "customSpacingSize": false, "defaultSpacingSizes": false },
+    "border": { "color": false, "radius": false, "style": false, "width": false },
+    "shadow": { "defaultPresets": false }
+  },
+  "styles": {
+    "spacing": { "blockGap": "0px", "padding": { "top": "0px", "right": "0px", "bottom": "0px", "left": "0px" } },
+    "elements": {
+      "link": { "color": { "text": "inherit" }, "typography": { "textDecoration": "none" } }
+    }
+  },
+  "templateParts": [
+    { "name": "header", "title": "Header", "area": "header" },
+    { "name": "footer", "title": "Footer", "area": "footer" }
+  ]
+}
