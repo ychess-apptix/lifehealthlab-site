@@ -1,4 +1,4 @@
-{"exportedAt":"2026-11-19","reviews":{"company-hero":{
+{"exportedAt":"2026-11-24","reviews":{"company-hero":{
   "comment": "【v9評価】良い。机を囲む自然な会議、ガラスと木のオフィス。\n【修正案】壁のサインが白い壁に平らに印刷されたように見える。top-office と同じ「オーク材パネル＋厚みのある切り文字」にそろえると統一感が出る。",
   "pick": "v8-mark",
   "updatedAt": "2026-11-19T10:00:00.000Z"
@@ -14,124 +14,124 @@
   "updatedAt": "2026-11-19T11:00:00.000Z"
 }
 ,"div-media-ec":{
-  "comment": "【v9評価】良い。右のノートが自然に開いた。\n【修正案】なし。",
-  "pick": "redo",
-  "updatedAt": "2026-11-19T10:00:00.000Z"
+  "comment": "",
+  "pick": "v12",
+  "updatedAt": "2026-11-24T08:09:26.984Z"
 }
 ,"ec-hero":{
-  "comment": "【修正案】Base on v10 the texture, use the same photo.  Revise the make the  new logo in the CI as エプロンのロゴがしわに沿って縫い付けた感じに。Make sure it flow the curved edges and wrinkles and look real not fake.  Regenerate if needed.\n【v11で対応】v10 の写真のまま、ロゴを消してから CI の刺しゅうロゴ（生成り糸）を胸当ての左寄りに入れ直し。v11 を確認してください。",
-  "pick": "redo",
-  "updatedAt": "2026-11-19T10:11:51.223Z"
+  "comment": "",
+  "pick": "v12",
+  "updatedAt": "2026-11-24T08:14:00.436Z"
 }
 ,"ec-policy":{
-  "comment": "【v9評価】良い。CI のパウチ、自然な表情。\n【修正案】なし。",
-  "pick": "v8-mark",
-  "updatedAt": "2026-11-19T10:00:00.000Z"
+  "comment": "",
+  "pick": "v12",
+  "updatedAt": "2026-11-24T08:14:50.646Z"
 }
 ,"healthcare-hero":{
-  "comment": "【v9評価】良い。白衣のロゴが小さくなじむ。\n【修正案】小窓の粉が少し粒状。気になれば細かい粉に。",
-  "pick": "v8-mark",
-  "updatedAt": "2026-11-19T10:00:00.000Z"
+  "comment": "",
+  "pick": "v12",
+  "updatedAt": "2026-11-24T08:11:36.403Z"
 }
 ,"healthcare-policy":{
-  "comment": "【v10で修正済み】クラフト袋2つのロゴを消して無地の試作袋に。\n【修正案】なし。",
-  "pick": "v8-mark",
-  "updatedAt": "2026-11-19T11:00:00.000Z"
+  "comment": "",
+  "pick": "v12",
+  "updatedAt": "2026-11-24T08:11:32.944Z"
 }
 ,"hero-food":{
-  "comment": "【v9評価】良い。温かい接客の場面。\n【修正案】のれんのロゴが左の布の中央にある。CI では右の布の下側に小さく。気になれば移動。",
-  "pick": "v8-mark",
-  "updatedAt": "2026-11-19T10:00:00.000Z"
+  "comment": "",
+  "pick": "v12",
+  "updatedAt": "2026-11-24T07:58:47.159Z"
 }
 ,"hero-product":{
-  "comment": "【v9評価】良い。朝食の自然な場面、CI のパウチ。\n【修正案】なし。",
-  "pick": "v8-mark",
-  "updatedAt": "2026-11-19T10:00:00.000Z"
+  "comment": "Lose the person and focus on products.",
+  "pick": "redo",
+  "updatedAt": "2026-11-24T07:58:16.327Z"
 }
 ,"hero-research":{
-  "comment": "【v9評価】良い。明るいオークの部屋、整った机、ロゴもなじむ。\n【修正案】なし。",
-  "pick": "v8-mark",
-  "updatedAt": "2026-11-19T10:00:00.000Z"
+  "comment": "",
+  "pick": "v12",
+  "updatedAt": "2026-11-24T07:58:28.153Z"
 }
 ,"message-desk":{
-  "comment": "【v9評価】良い。自然な手元の写真。\n【修正案】なし。",
-  "pick": "v8-mark",
-  "updatedAt": "2026-11-19T10:00:00.000Z"
+  "comment": "",
+  "pick": "v12",
+  "updatedAt": "2026-11-24T08:09:45.858Z"
 }
 ,"message-hero":{
   "comment": "【v9評価】良い。温かい朝の光。\n【修正案】壁と机の木漏れ日の模様がやや強く、ogp・hero-product と並ぶと同じ演出が続く。統一するなら影を少し弱く。",
-  "pick": "v8-mark",
-  "updatedAt": "2026-11-19T10:00:00.000Z"
+  "pick": "v12",
+  "updatedAt": "2026-11-24T08:09:17.180Z"
 }
 ,"ogp":{
-  "comment": "【v9評価】良い。CI のパウチ3種、右側に文字を入れる余白あり。\n【修正案】なし（光の模様は message-hero と同じ傾向）。",
-  "pick": "v8-mark",
-  "updatedAt": "2026-11-19T10:00:00.000Z"
+  "comment": "",
+  "pick": "v12",
+  "updatedAt": "2026-11-24T08:16:18.202Z"
 }
 ,"overview-hero":{
-  "comment": "【v9評価】要修正（v5 を採用したため以前の問題が残る）。\n【修正案】①サインが白い壁に平らに印刷されたよう→オーク材パネル＋厚みのある切り文字（top-office と統一）。②奥の部屋の床だけ古い板→入口と同じ新しいオーク材に。",
-  "pick": "v8-mark",
-  "updatedAt": "2026-11-19T10:00:00.000Z"
+  "comment": "",
+  "pick": "v12",
+  "updatedAt": "2026-11-24T08:09:41.423Z"
 }
 ,"publishing-hero":{
-  "comment": "【v9評価】とても良い。いちばん自然な写真。\n【修正案】なし。",
-  "pick": "v8-mark",
-  "updatedAt": "2026-11-19T10:00:00.000Z"
+  "comment": "",
+  "pick": "v12",
+  "updatedAt": "2026-11-24T08:12:38.421Z"
 }
 ,"publishing-policy":{
-  "comment": "【v9評価】良い。青い本が中身のあるノートに直った。\n【修正案】なし。",
-  "pick": "redo",
-  "updatedAt": "2026-11-19T10:00:00.000Z"
+  "comment": "",
+  "pick": "v12",
+  "updatedAt": "2026-11-24T08:13:15.117Z"
 }
 ,"recruit-entry":{
-  "comment": "【v9評価】良い。落ち着いた面談の雰囲気。\n【修正案】なし。",
-  "pick": "v8-mark",
-  "updatedAt": "2026-11-19T10:00:00.000Z"
+  "comment": "",
+  "pick": "v12",
+  "updatedAt": "2026-11-24T08:16:13.570Z"
 }
 ,"recruit-hero":{
-  "comment": "【v9評価】おおむね良い。\n【修正案】①天井がコンクリート・黒いレールで、ほかのオフィス（白い壁・オーク・ガラス）と雰囲気が違う→木の天井や白い天井に。②全員が大笑い→2〜3人は落ち着いた表情に。",
-  "pick": "v8-mark",
-  "updatedAt": "2026-11-19T10:00:00.000Z"
+  "comment": "",
+  "pick": "v5",
+  "updatedAt": "2026-11-24T08:15:30.224Z"
 }
 ,"recruit-programs":{
-  "comment": "【修正案】Base on v2 the texture, use the same photo.  Revise the make the  new logo in the CI as エプロンのロゴがしわに沿って縫い付けた感じに。Make sure it flow the curved edges and wrinkles and look real not fake.  Regenerate if needed.\n【v11で対応】v2 の写真から古い青い波ロゴを消し、2人のエプロンに CI の刺しゅうロゴを入れた。v11 を確認してください。",
-  "pick": "redo",
-  "updatedAt": "2026-11-19T10:11:11.978Z"
+  "comment": "",
+  "pick": "v12",
+  "updatedAt": "2026-11-24T08:15:40.345Z"
 }
 ,"restaurant-hero":{
-  "comment": "【v10・サイト確認】service/restaurant.html のページ上部（21:8 に切り抜き）。顔・ご飯・のれんのロゴが枠内に収まり問題なし。\n【修正案】画像は修正なし。ページ全体で写真が2枚だけなので、restaurant-policy のコメントの「ページの追加写真」を参照。",
-  "pick": "v8-mark",
-  "updatedAt": "2026-11-19T11:00:00.000Z"
+  "comment": "",
+  "pick": "v12",
+  "updatedAt": "2026-11-24T08:12:17.862Z"
 }
 ,"restaurant-policy":{
-  "comment": "【修正案】Base on v4 the texture, use the same photo.  Revise the make the  new logo in the CI as エプロンのロゴがしわに沿って縫い付けた感じに。Make sure it flow the curved edges and wrinkles and look real not fake.  Regenerate if needed.\n【v11で対応】v4 の写真の無地エプロンに CI の刺しゅうロゴを入れた。v11 を確認してください。\n【ページの追加写真（推奨）】§02 ご提供メニュー・§03 プロジェクト事例・§04 ご依頼の流れ・§06 担当者の声がすべて文字だけで長い。①定食（一汁三菜）のアップ②市場直送の鮮魚と料理人の手元③健康弁当の俯瞰④試食会（他社メニュー監修）の4枚を事例カードに、⑤料理長と店舗運営担当の人物写真（人型アイコンの代わり）を追加すると、ページの説得力が上がる。他の事業ページ（ヘルスケア・出版・EC）も同じ構成なので同様に。",
-  "pick": "redo",
-  "updatedAt": "2026-11-19T10:12:44.632Z"
+  "comment": "",
+  "pick": "v12",
+  "updatedAt": "2026-11-24T08:12:30.815Z"
 }
 ,"service-hero":{
-  "comment": "【v10で修正済み】手を2人分だけに、ふたの内側のロゴを削除、木のスプーンに。\n【修正案】なし。",
-  "pick": "v8-mark",
-  "updatedAt": "2026-11-19T11:00:00.000Z"
+  "comment": "base on v12 remove the hand holding the product packing",
+  "pick": "redo",
+  "updatedAt": "2026-11-24T08:11:17.865Z"
 }
 ,"svc-ec":{
-  "comment": "【v9評価】良い。4枚のふたがそろった自然な箱に。\n【修正案】なし。",
+  "comment": "focus on the business of this image, loose the faces",
   "pick": "redo",
-  "updatedAt": "2026-11-19T10:00:00.000Z"
+  "updatedAt": "2026-11-24T08:07:51.627Z"
 }
 ,"svc-healthcare":{
-  "comment": "【v9評価】良い。CI のパウチと化粧品、細かい粉。\n【修正案】なし。",
-  "pick": "v8-mark",
-  "updatedAt": "2026-11-19T10:00:00.000Z"
+  "comment": "",
+  "pick": "v12",
+  "updatedAt": "2026-11-24T08:02:07.240Z"
 }
 ,"svc-publishing":{
-  "comment": "【v10で修正済み】料理本のページと棚の本の背のロゴを削除、光を少しやわらかく。\n【修正案】なし。",
-  "pick": "v8-mark",
-  "updatedAt": "2026-11-19T11:00:00.000Z"
+  "comment": "use 23 publishing-hero.jpg instead ; resize if needed.\n",
+  "pick": "redo",
+  "updatedAt": "2026-11-24T08:09:02.767Z"
 }
 ,"svc-restaurant":{
-  "comment": "【v10・サイト確認】トップとサービス一覧の「フード＆レストラン」カードに使用。v8-nomark（エプロンにロゴなし）。\n【修正案】同じ事業の restaurant-hero・restaurant-policy はエプロンに刺しゅうロゴがあるため、並ぶと不統一。どちらかにそろえる（推奨：この写真にも小さな刺しゅうロゴを入れる）。",
-  "pick": "v8-nomark",
-  "updatedAt": "2026-11-19T11:00:00.000Z"
+  "comment": "base on v8-nomark, the tray on holding in lady's hand should be turned 90 degrees to be natural looking.",
+  "pick": "redo",
+  "updatedAt": "2026-11-24T08:01:50.325Z"
 }
 ,"top-office":{
   "comment": "【v9評価】おおむね良い。受付カウンターは v7 で作り直し済み。\n【修正案】全体が CG の内装パースのように均一できれい。机の上に少し生活感（書類・カーディガン・マグ）と、光のむらを足すと写真らしくなる。",
@@ -139,13 +139,13 @@
   "updatedAt": "2026-11-19T10:00:00.000Z"
 }
 ,"top-recruit":{
-  "comment": "【v9評価】おおむね良い（v8-nomark：白衣・エプロンにロゴなし）。\n【修正案】①手前の机が画面の約4割で何もない→少し下を切るか、手前の小物を増やす。②ほかの写真と統一するなら白衣・エプロンに刺しゅうロゴを入れる。",
-  "pick": "v8-nomark",
-  "updatedAt": "2026-11-19T10:00:00.000Z"
+  "comment": "",
+  "pick": "v5",
+  "updatedAt": "2026-11-24T08:08:22.454Z"
 }
 ,"top-who":{
-  "comment": "【v9評価】良い。4人の自然な打ち合わせ、CI のパウチ。\n【修正案】なし。",
-  "pick": "v8-mark",
-  "updatedAt": "2026-11-19T10:00:00.000Z"
+  "comment": "",
+  "pick": "v12",
+  "updatedAt": "2026-11-24T07:58:58.238Z"
 }
 }}
