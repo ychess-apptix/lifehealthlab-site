@@ -131,7 +131,7 @@
       slides[i].classList.add('is-on');
       var prev = slides[cur]; wasTimer = setTimeout(function () { prev.classList.remove('was'); }, FADE + 60);
       dots.forEach(function (d, k) { d.setAttribute('aria-current', k === i ? 'true' : 'false'); d.style.setProperty('--p', 0); });
-      tag.textContent = 'Sample 0' + (i + 1) + ' / 03 · ' + names[i];
+      if (tag) tag.textContent = 'Sample 0' + (i + 1) + ' / 03 · ' + names[i];
       if (!reduce) { scan.classList.remove('go'); void scan.offsetWidth; scan.classList.add('go'); }
       cur = i; t = 0;
     }
