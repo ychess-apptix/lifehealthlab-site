@@ -218,7 +218,7 @@ dialog::backdrop{background:rgba(5,12,12,.82)}
             <tr><th scope="row">v10</th><td class="mono">（v9 を元に編集）</td><td>v9 の確認で「要修正」とした5枚だけを直す（画面・手の数・本のロゴ・カプセル状の中身・クラフト袋のロゴ）。</td><td>5枚を修正、残り25枚は v9 と同じ。看板の形・天井・服のロゴ有無などの統一は未対応。</td></tr>
             <tr><th scope="row">v11</th><td class="mono">（v10・v2・v4 を元に編集）</td><td>レビューのコメントどおり、エプロンのロゴを CI の刺しゅうロゴで、しわに沿って縫い付けた感じに入れ直す（ロゴを消す→入れるの2段階）。</td><td>3枚を修正（ec-hero・recruit-programs・restaurant-policy）、残り27枚は v10 と同じ。</td></tr>
             <tr><th scope="row">v12</th><td class="mono">image-prompts-full-site-3rb-v12.md</td><td>No.13・22・28 のエプロンを、v2・v4・v2 の写真を元に CI ガイドのエプロン（ci-05・ci-09 を添付）に合わせて作り直す：深緑の帆布、生成りのひもと×の補強ステッチ、縁のステッチ、ポケット、胸の横組み刺しゅう。</td><td>3枚を修正（div-foodservice・restaurant-policy・recruit-programs）、残り27枚は v11 と同じ。</td></tr>
-            <tr><th scope="row">v13</th><td class="mono">image-prompts-full-site-3rb-v13.md</td><td>11/24 のレビューから：人や顔を消して商品・事業に集中（hero-product・svc-ec）、手を消す（service-hero）。svc-publishing は publishing-hero に、svc-restaurant は restaurant-hero に差し替え、recruit-hero・top-recruit は v5。</td><td>3枚を ChatGPT で修正、2枚差し替え、2枚を v5 に、残り23枚は v12 と同じ。</td></tr>
+            <tr><th scope="row">v13</th><td class="mono">image-prompts-full-site-3rb-v13.md</td><td>11/24 のレビューから：人や顔を消して商品・事業に集中（hero-product・svc-ec）、手を消す（service-hero）、restaurant-hero の赤い色かぶりを自然な光に。svc-publishing は publishing-hero に、svc-restaurant は restaurant-hero に差し替え、recruit-hero・top-recruit は v5。サイトの写真ラベル（SAMPLE … / Fig. …）も削除。</td><td>4枚を ChatGPT で修正、2枚差し替え、2枚を v5 に、残り22枚は v12 と同じ。</td></tr>
           </tbody>
         </table>
       </div>
@@ -553,7 +553,8 @@ dialog::backdrop{background:rgba(5,12,12,.82)}
     "hero-product":"v12 の場面を元に、人を消して商品（パウチ・グラス・小皿の粉）が主役の写真に作り直し。テーブルにこぼれた赤い粉も消した。",
     "service-hero":"v12 を元に、箱の中のパウチを持つ手と袖を削除。パウチは箱の中に置いたまま。",
     "svc-ec":"v12 の場面を元に、顔が入らない手元のアップに作り直し（パウチと CI ロゴの段ボールが主役）。",
-    "svc-restaurant":"No.21 restaurant-hero（v12）の写真に差し替え（同じ 1536×1024、生成なし）。",
+    "svc-restaurant":"No.21 restaurant-hero（v13）と同じ写真に差し替え（同じ 1536×1024）。",
+    "restaurant-hero":"v12 を元に、赤・オレンジに寄った色と光を、自然な昼の光（白い壁・明るいオーク材）に作り直し。エプロンの刺しゅうロゴも CI に直した。",
     "svc-publishing":"No.23 publishing-hero（v12）の写真に差し替え（同じ 1536×1024、生成なし）。",
     "recruit-hero":"「使う版」に合わせて v5 の写真。",
     "top-recruit":"「使う版」に合わせて v5 の写真。"
