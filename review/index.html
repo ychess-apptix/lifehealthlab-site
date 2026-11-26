@@ -105,6 +105,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .ver.picked{background:var(--sea-soft)}
 .ver-hd{display:flex;align-items:center;gap:8px}
 .ver-hd b{font-family:var(--f-mono);font-size:13px}
+.ver-hd .site-lk{margin-left:auto;font-size:11.5px;color:var(--teal);text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
 .ver-hd .rec{font-size:11px;border-radius:4px;padding:0 6px;background:var(--teal);color:var(--surface)}
 .thumb{display:block;padding:0;border:0;background:var(--sunk);border-radius:6px;overflow:hidden;aspect-ratio:3/2;width:100%}
 .thumb img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .3s}
@@ -165,6 +166,8 @@ dialog::backdrop{background:rgba(5,12,12,.82)}
   </div>
   <nav class="wrap links" aria-label="関連リンク">
     <a href="https://ychess-apptix.github.io/lifehealthlab-site/" target="_blank" rel="noopener">テストサイト</a>
+    <a href="https://ychess-apptix.github.io/lifehealthlab-site/?v=picks" target="_blank" rel="noopener">サイトで見る（使う版）</a>
+    <span class="vers-lk">版ごとに見る：<a href="https://ychess-apptix.github.io/lifehealthlab-site/?v=v2" target="_blank" rel="noopener">v2</a> <a href="https://ychess-apptix.github.io/lifehealthlab-site/?v=v5" target="_blank" rel="noopener">v5</a> <a href="https://ychess-apptix.github.io/lifehealthlab-site/?v=v8-mark" target="_blank" rel="noopener">v8-mark</a> <a href="https://ychess-apptix.github.io/lifehealthlab-site/?v=v10" target="_blank" rel="noopener">v10</a> <a href="https://ychess-apptix.github.io/lifehealthlab-site/?v=v12" target="_blank" rel="noopener">v12</a> <a href="https://ychess-apptix.github.io/lifehealthlab-site/?v=v13" target="_blank" rel="noopener">v13</a></span>
     <a href="https://ychess-apptix.github.io/lifehealthlab-site/ci-guide/" target="_blank" rel="noopener">CI ガイド</a>
     <a href="https://claude.ai/artifact/36uHpUN4fNGnfef3TnV3Pz" target="_blank" rel="noopener">写真レビュー（コメント記入用・claude.ai）</a>
   </nav>
@@ -569,6 +572,8 @@ dialog::backdrop{background:rgba(5,12,12,.82)}
   const list = $("#list"), statusEl = $("#status");
   let prompts = {}, reviews = {}, filter = "all", db = null, canWrite = true;
 
+  const SITE = "https://ychess-apptix.github.io/lifehealthlab-site/";
+  const PAGE_OF = {"company-hero":"company/","div-foodservice":"company/","div-healthcare":"company/","div-media-ec":"company/","ec-hero":"service/ec.html","ec-policy":"service/ec.html","healthcare-hero":"service/healthcare.html","healthcare-policy":"service/healthcare.html","hero-food":"","hero-product":"","hero-research":"","message-desk":"company/message.html","message-hero":"company/message.html","overview-hero":"company/overview.html","publishing-hero":"service/publishing.html","publishing-policy":"service/publishing.html","recruit-entry":"recruit/","recruit-hero":"recruit/","recruit-programs":"recruit/","restaurant-hero":"service/restaurant.html","restaurant-policy":"service/restaurant.html","service-hero":"service/","svc-ec":"","svc-healthcare":"","svc-publishing":"","svc-restaurant":"","top-office":"","top-recruit":"","top-who":"","ogp":""};
   function el(tag, attrs, ...kids){
     const e = document.createElement(tag);
     for (const [k,v] of Object.entries(attrs||{})) {
@@ -603,7 +608,8 @@ dialog::backdrop{background:rgba(5,12,12,.82)}
       VERS.forEach(v => {
         const d = r[v];
         const box = el("div",{class:"ver "+v+(rv.pick===v?" picked":"")});
-        box.append(el("div",{class:"ver-hd"}, el("b",{text:v}), r.rec===v ? el("span",{class:"rec",text:"おすすめ"}) : null, v==="v13" ? el("span",{class:"new",text:"最新・完成セット"}) : v==="v12" ? el("span",{class:"new",text:"サイト反映中"}) : null));
+        box.append(el("div",{class:"ver-hd"}, el("b",{text:v}), r.rec===v ? el("span",{class:"rec",text:"おすすめ"}) : null, v==="v13" ? el("span",{class:"new",text:"最新・サイト反映中"}) : null,
+          el("a",{class:"site-lk", href: SITE + (PAGE_OF[r.f]||"") + "?v=picks&" + r.f + "=" + v, target:"_blank", rel:"noopener", title:"この写真をこの版にして、ほかは「使う版」でサイトを表示", text:"サイトで見る"})));
         const btn = el("button",{class:"thumb",type:"button","aria-label":r.f+" "+v+" を拡大"});
         btn.append(el("img",{src:"img/"+v+"/"+r.f+".jpg",alt:r.slot+"（"+v+"）",loading:"lazy",decoding:"async"}));
         btn.addEventListener("click", () => openLb(i, v));
